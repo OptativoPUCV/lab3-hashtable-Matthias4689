@@ -43,11 +43,13 @@ void insertMap(HashMap *map, char *key, void *value) {
   int position = hash(key, map->capacity);
 
   // Se comprueba que la posicion actual esta libre
+  // Añade el par clave-valor
   if (map->buckets[position] == NULL || map->buckets[position]->key == NULL) {
     map->buckets[position] = createPair(key, value);
 
   } else {
     // Si esta ocupada entra en el bucle while hasta encontrar una posicion libre.
+    // Añade el par clave-valor
     while (map->buckets[position] != NULL &&
            map->buckets[position]->key != NULL) {
       position = (position + 1) % map->capacity;
@@ -64,22 +66,26 @@ void enlarge(HashMap *map) {
   if (map == NULL) return;
 
   Pair **oldBuckets = map->buckets;
+  //duplicamos la capacity
   map->capacity *= 2;
+  // Reserva memoria para los buckets
   map->buckets = (Pair **)calloc(map->capacity, sizeof(Pair *));
   map->size = 0;
 
   int indice = 0;
   while (indice < map->capacity / 2) {
     if (oldBuckets[indice] != NULL && oldBuckets[indice]->key != NULL) {
+      // Reinserta los elementos en la nueva tabla, después de duplicar capacity.
       insertMap(map, oldBuckets[indice]->key, oldBuckets[indice]->value);
     }
     indice++;
   }
 
-  free(oldBuckets);
+  free(oldBuckets); // Libera la memoria de la tabla anterior.
 }
 
 HashMap *createMap(long capacity) {
+  // Se crea una nueva tabla
   HashMap *map = (HashMap *)malloc(sizeof(HashMap));
   // Reservar memoria
   map->buckets = (Pair **)malloc(sizeof(Pair *) * capacity);
@@ -88,7 +94,7 @@ HashMap *createMap(long capacity) {
   map->capacity = capacity;
   map->current = -1;
 
-  return map;
+  return map; //Se retorna la tabla creada
 }
 
 void eraseMap(HashMap *map, char *key) {
@@ -97,7 +103,8 @@ void eraseMap(HashMap *map, char *key) {
     if (map == NULL || key == NULL) return;
 
     while (map->buckets[position] != NULL) {
-    if (is_equal(map->buckets[position]->key, key)) {
+      // Se compara la clave actual con la que se esta buscando
+      if (is_equal(map->buckets[position]->key, key)) {
       map->current = position;
       map->buckets[position]->key = NULL;
       map->size--;
@@ -111,21 +118,24 @@ Pair *searchMap(HashMap *map, char *key) {
   int position = hash(key, map->capacity);
 
   if (map == NULL || key == NULL) return NULL;
-
+  // Funciona de manera similar a la funcion eraseMap
+  // Cambia el interior del ciclo if ** *
   while (map->buckets[position] != NULL) {
+    // Se compara la clave actual con la que se esta buscando
     if (is_equal(map->buckets[position]->key, key)) {
       map->current = position;
       return map->buckets[position];
     }
     position = (position + 1) % map->capacity;
   }
-
+  // Si no se encuentra la clave se retorna NULL
   return NULL;
 }
 
 Pair *firstMap(HashMap *map) {
   int indice = 0;
 
+  // Encuentra el primer par clave-valor
   while (indice < map->capacity){
     if (map->buckets[indice] != NULL && map->buckets[indice]->key != NULL){
       map->current = indice;
@@ -133,12 +143,13 @@ Pair *firstMap(HashMap *map) {
     }
     indice++;
   }  
-    return NULL; 
+    return NULL;// Si no se logra encontrar retorna NULL
 }
 
 Pair *nextMap(HashMap *map) { 
   int indice = map->current +1;
   
+  // Encuentra el siguiente par clave-valor
   while (indice < map->capacity){
     if (map->buckets[indice] != NULL && map->buckets[indice]->key != NULL){
       map->current = indice;
@@ -146,5 +157,5 @@ Pair *nextMap(HashMap *map) {
     }
     indice++;
   }  
-   return NULL; 
+   return NULL; // Si no se logra encontrar retorna NULL
 }
