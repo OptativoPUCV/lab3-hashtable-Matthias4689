@@ -61,8 +61,7 @@ void insertMap(HashMap *map, char *key, void *value) {
 void enlarge(HashMap *map) {
   enlarge_called = 1; // no borrar (testing purposes)
 
-  if (map == NULL)
-    return;
+  if (map == NULL) return;
 
   Pair **oldBuckets = map->buckets;
   map->capacity *= 2;
@@ -82,9 +81,6 @@ void enlarge(HashMap *map) {
 
 HashMap *createMap(long capacity) {
   HashMap *map = (HashMap *)malloc(sizeof(HashMap));
-
-  if (map == NULL)
-    return NULL;
 
   // Reservar memoria
   map->buckets = (Pair **)malloc(sizeof(Pair *) * capacity);
@@ -133,7 +129,7 @@ Pair *firstMap(HashMap *map) {
 
   map->current++;
 
-
+  
   
     return NULL; 
 
