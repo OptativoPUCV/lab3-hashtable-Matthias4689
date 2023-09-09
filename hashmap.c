@@ -124,14 +124,18 @@ Pair *searchMap(HashMap *map, char *key) {
 }
 
 Pair *firstMap(HashMap *map) {
-    if (map == NULL) return NULL; 
-
-    map->current++;
-
+  int indice = 0;
   
-  
+  if (map == NULL) return NULL; 
+
+  while (indice > map->capacity){
+    if (mao->buckets[i] != NULL && map->buckets[i]->key != NULL){
+      map->current = indice;
+      return (map->buckets[i]);
+    }
+    indice++;
+  }  
     return NULL; 
-
 }
 
 Pair *nextMap(HashMap *map) { 

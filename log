@@ -176,3 +176,18 @@ Sat 09 Sep 2023 06:49:02 AM UTC:
  tests:  12|1
 total_score: 60/70
 3559c5c
+Sat 09 Sep 2023 06:57:26 AM UTC: 
+ hashmap.c | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘firstMap’:
+hashmap.c:132:9: error: ‘mao’ undeclared (first use in this function); did you mean ‘map’?
+  132 |     if (mao->buckets[i] != NULL && map->buckets[i]->key != NULL){
+      |         ^~~
+      |         map
+hashmap.c:132:9: note: each undeclared identifier is reported only once for each function it appears in
+hashmap.c:132:22: error: ‘i’ undeclared (first use in this function)
+  132 |     if (mao->buckets[i] != NULL && map->buckets[i]->key != NULL){
+      |                      ^
+Compilation failed
+a071c29
