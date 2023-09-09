@@ -81,7 +81,6 @@ void enlarge(HashMap *map) {
 
 HashMap *createMap(long capacity) {
   HashMap *map = (HashMap *)malloc(sizeof(HashMap));
-
   // Reservar memoria
   map->buckets = (Pair **)malloc(sizeof(Pair *) * capacity);
   // Iniciar las variables dentro del mapa
@@ -125,9 +124,9 @@ Pair *searchMap(HashMap *map, char *key) {
 }
 
 Pair *firstMap(HashMap *map) {
-  if (map == NULL || map->current == -1) return NULL; 
+    if (map == NULL) return NULL; 
 
-  map->current++;
+    map->current++;
 
   
   
@@ -136,7 +135,7 @@ Pair *firstMap(HashMap *map) {
 }
 
 Pair *nextMap(HashMap *map) { 
-
+    if (map == NULL) return NULL;
   
     return NULL; 
 }
