@@ -47,8 +47,7 @@ void insertMap(HashMap *map, char *key, void *value) {
     map->buckets[position] = createPair(key, value);
 
   } else {
-    // Si esta ocupada entra en el bucle while hasta encontrar una posicion
-    // libre.
+    // Si esta ocupada entra en el bucle while hasta encontrar una posicion libre.
     while (map->buckets[position] != NULL &&
            map->buckets[position]->key != NULL) {
       position = (position + 1) % map->capacity;
@@ -87,7 +86,7 @@ HashMap *createMap(long capacity) {
   if (map == NULL)
     return NULL;
 
-  // Reservar memoria para buckets
+  // Reservar memoria
   map->buckets = (Pair **)malloc(sizeof(Pair *) * capacity);
   // Iniciar las variables dentro del mapa
   map->size = 0;
@@ -97,13 +96,26 @@ HashMap *createMap(long capacity) {
   return map;
 }
 
-void eraseMap(HashMap *map, char *key) {}
+void eraseMap(HashMap *map, char *key) {
+    int position = hash(key, map->capacity);    
+    
+    if (map == NULL || key == NULL) return NULL;
+
+    while (map->buckets[position] != NULL) {
+    if (is_equal(map->buckets[position]->key, key)) {
+      map->current = position;
+      map->buckets[position]->key = NULL;
+      map->size--;
+      return;
+    }
+    position = (position + 1) % map->capacity;
+  }
+}
 
 Pair *searchMap(HashMap *map, char *key) {
   int position = hash(key, map->capacity);
 
-  if (map == NULL)
-    return NULL;
+  if (map == NULL || key == NULL) return NULL;
 
   while (map->buckets[position] != NULL) {
     if (is_equal(map->buckets[position]->key, key)) {
