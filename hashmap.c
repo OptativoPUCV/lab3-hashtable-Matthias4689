@@ -88,7 +88,7 @@ HashMap * createMap(long capacity) {
     // Reservar memoria para buckets
     map->buckets = (Pair **)malloc(sizeof(Pair *) *capacity);
 
-    //
+    // Iniciar las variables dentro del mapa
     map->size = 0;
     map->capacity = capacity;
     map->current= -1;
