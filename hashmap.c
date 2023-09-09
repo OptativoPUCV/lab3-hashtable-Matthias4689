@@ -39,16 +39,19 @@ int is_equal(void* key1, void* key2){
 }
 
 
-void insertMap(HashMap * map, char * key, void * value) { 
+void insertMap(HashMap *map, char *key, void *value) {
   int position = hash(key, map->capacity);
 
-  if (map==NULL || key==NULL) return;
+   if (map->buckets[position] == NULL || map->buckets[position]->key == NULL) {
+      map->buckets[position] = createPair(key, value);
+     
+   } else {
+       while (map->buckets[position] != NULL && map->buckets[position]->key != NULL) {
+          position = (position + 1) % map->capacity;
+       }
+      map->buckets[position] = createPair(key, value);
+    }
 
-  if (map->buckets[position] != NULL && map->buckets[position]->key != NULL) {
-    position = (position + 1) % map->capacity;
-  }
-
-  map->buckets[position] = createPair(key, value);
   map->size++;
   map->current = position;
 }
