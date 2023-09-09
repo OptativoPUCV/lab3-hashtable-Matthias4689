@@ -125,8 +125,6 @@ Pair *searchMap(HashMap *map, char *key) {
 
 Pair *firstMap(HashMap *map) {
   int indice = 0;
-  
-  if (map == NULL) return NULL; 
 
   while (indice > map->capacity){
     if (map->buckets[indice] != NULL && map->buckets[indice]->key != NULL){
