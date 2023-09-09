@@ -103,3 +103,9 @@ hashmap.c:92:5: error: ‘mao’ undeclared (first use in this function); did yo
 hashmap.c:92:5: note: each undeclared identifier is reported only once for each function it appears in
 Compilation failed
 ad99a92
+Sat 09 Sep 2023 03:51:14 AM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  6|3
+total_score: 40/70
+0c9cb48
