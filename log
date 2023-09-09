@@ -50,3 +50,18 @@ Sat 09 Sep 2023 03:13:13 AM UTC:
  tests:  5|4
 total_score: 30/70
 7f1a554
+Sat 09 Sep 2023 03:14:18 AM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘createMap’:
+hashmap.c:85:12: error: ‘MAP’ undeclared (first use in this function)
+   85 |     return MAP;
+      |            ^~~
+hashmap.c:85:12: note: each undeclared identifier is reported only once for each function it appears in
+hashmap.c:86:1: error: control reaches end of non-void function [-Werror=return-type]
+   86 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+2431aa1
