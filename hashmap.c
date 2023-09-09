@@ -62,11 +62,21 @@ void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
 
     if (map == NULL) return;
-
+    
+    Pair **oldBuckets = map->buckets;
     map->capacity *= 2;
     map->buckets = (Pair **)calloc(map->capacity, sizeof(Pair *));
     map->size = 0;
+
+    long indice = 0;
+    while (indice < map->capacity / 2) {
+      if (oldBuckets[indice] != NULL && oldBuckets[indice]->key != NULL) {
+        insertMap(map, oldBuckets[indice]->key, oldBuckets[indice]->value);
+      }
+      indice++;
+    }
   
+    free(oldBuckets);
 }
 
 
