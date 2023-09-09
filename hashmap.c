@@ -129,9 +129,9 @@ Pair *firstMap(HashMap *map) {
   if (map == NULL) return NULL; 
 
   while (indice > map->capacity){
-    if (mao->buckets[i] != NULL && map->buckets[i]->key != NULL){
+    if (map->buckets[indice] != NULL && map->buckets[indice]->key != NULL){
       map->current = indice;
-      return (map->buckets[i]);
+      return (map->buckets[indice]);
     }
     indice++;
   }  
