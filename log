@@ -158,3 +158,9 @@ hashmap.c:125:14: error: operation on ‘position’ may be undefined [-Werror=s
 cc1: all warnings being treated as errors
 Compilation failed
 71a8fbd
+Sat 09 Sep 2023 06:38:29 AM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  12|1
+total_score: 60/70
+d915d36
