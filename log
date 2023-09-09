@@ -71,3 +71,23 @@ Sat 09 Sep 2023 03:14:57 AM UTC:
  tests:  5|4
 total_score: 30/70
 8653a67
+Sat 09 Sep 2023 03:50:33 AM UTC: 
+ hashmap.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘createMap’:
+hashmap.c:89:61: error: expected ‘;’ before ‘mao’
+   89 |     map->buckets = (Pair **)malloc(sizeof(Pair *) *capacity)
+      |                                                             ^
+      |                                                             ;
+......
+   92 |     mao->size = 0;
+      |     ~~~                                                      
+hashmap.c:96:15: error: expected ‘;’ before ‘}’ token
+   96 |     return map
+      |               ^
+      |               ;
+   97 | }
+      | ~              
+Compilation failed
+6b2a3a4
