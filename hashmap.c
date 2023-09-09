@@ -45,10 +45,7 @@ void insertMap(HashMap * map, char * key, void * value) {
   if (map==NULL || key==NULL) return;
 
   if (map->buckets[position] != NULL && map->buckets[position]->key != NULL) {
-      // En caso de que la posicion este ocupada, buscamos una libre.
-      while (map->buckets[position] != NULL && map->buckets[position]->key != NULL) {
-          position = (position + 1) % map->capacity;
-      }
+    position = (position + 1) % map->capacity;
   }
 
   map->buckets[position] = createPair(key, value);
