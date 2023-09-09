@@ -68,7 +68,7 @@ void enlarge(HashMap * map) {
     map->buckets = (Pair **)calloc(map->capacity, sizeof(Pair *));
     map->size = 0;
 
-    long indice = 0;
+    int indice = 0;
     while (indice < map->capacity / 2) {
       if (oldBuckets[indice] != NULL && oldBuckets[indice]->key != NULL) {
         insertMap(map, oldBuckets[indice]->key, oldBuckets[indice]->value);
@@ -87,7 +87,6 @@ HashMap * createMap(long capacity) {
 
     // Reservar memoria para buckets
     map->buckets = (Pair **)malloc(sizeof(Pair *) *capacity);
-
     // Iniciar las variables dentro del mapa
     map->size = 0;
     map->capacity = capacity;
