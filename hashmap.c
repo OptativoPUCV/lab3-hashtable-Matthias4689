@@ -122,12 +122,25 @@ Pair *searchMap(HashMap *map, char *key) {
       map->current = position;
       return map->buckets[position];
     }
-    position = (position + 1) % map->capacity;
+    position = (position ++) % map->capacity;
   }
 
   return NULL;
 }
 
-Pair *firstMap(HashMap *map) { return NULL; }
+Pair *firstMap(HashMap *map) {
+  if (map == NULL || map->current == -1) return NULL; 
 
-Pair *nextMap(HashMap *map) { return NULL; }
+  map->current++;
+
+
+  
+    return NULL; 
+
+}
+
+Pair *nextMap(HashMap *map) { 
+
+  
+    return NULL; 
+}

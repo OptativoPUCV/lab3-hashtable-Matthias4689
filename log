@@ -147,3 +147,14 @@ Sat 09 Sep 2023 06:13:12 AM UTC:
  tests:  12|1
 total_score: 60/70
 3930f90
+Sat 09 Sep 2023 06:38:14 AM UTC: 
+ hashmap.c | 19 ++++++++++++++++---
+ 1 file changed, 16 insertions(+), 3 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘searchMap’:
+hashmap.c:125:14: error: operation on ‘position’ may be undefined [-Werror=sequence-point]
+  125 |     position = (position ++) % map->capacity;
+      |     ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+71a8fbd
